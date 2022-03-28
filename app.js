@@ -3,11 +3,19 @@ const express = require("express");
 const { route } = require("express/lib/application");
 const { json } = require("express/lib/response");
 const morgan = require("morgan");
+
 const mongoose = require("mongoose");
+const configExpress=require('./config/express')
+const connectDB= require('./config/database')
 
 const app = express();
+
+configExpress(app);
+
+connectDB()
+
 const url = process.env.MONGO_DB_URI;
-mongoose.connect(url);
+/* mongoose.connect(url);
 const TaskSchema = new mongoose.Schema({
   course: String,
   description: String,
@@ -27,7 +35,7 @@ task.save()
     console.log('nota guardada', result);
 
   })
-  .catch()
+  .catch() */
 
 app.use(express.json());
 morgan.token("body", function (req, res) {
