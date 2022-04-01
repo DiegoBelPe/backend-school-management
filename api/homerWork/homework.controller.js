@@ -6,14 +6,14 @@ const {
   updateWork,
 } = require("./homework.service");
 
-function handlerAllWork(req, res) {
-  const tareas = getAllWork();
+async function handlerAllWork(req, res) {
+  const tareas = await getAllWork();
   res.json(tareas);
 }
 
-function handlerOneWork(req, res) {
+async function handlerOneWork(req, res) {
   const id = req.params.id;
-  const tarea = getOneWork(id);
+  const tarea = await getOneWork(id);
 
   if (!tarea) {
     res.status(404).json({ message: "tarea no encontrada" });
@@ -21,9 +21,9 @@ function handlerOneWork(req, res) {
     res.json(tarea);
   }
 }
-function handlerDeleteWork(req, res) {
+async function handlerDeleteWork(req, res) {
   const id = req.params.id;
-  const tarea = deleteWork(id);
+  const tarea = await deleteWork(id);
 
   if (!tarea) {
     res.status(404).json({ message: `tarea no encontrada id ${id}` });
@@ -31,7 +31,7 @@ function handlerDeleteWork(req, res) {
     res.json({ message: `Tarea con el id ${id} eliminada` });
   }
 }
-function handlerCreateWork(req, res) {
+async function handlerCreateWork(req, res) {
   const nuevaTarea = req.body;
 
   if (!nuevaTarea.course) {
@@ -44,14 +44,14 @@ function handlerCreateWork(req, res) {
     res.status(201).json({ Message: "Tarea agregada!" });
   }
 
- const tarea = createWork(nuevaTarea)
+ const tarea = await createWork(nuevaTarea)
   return res.status(201).json(tarea);
 }
-function handlerUpdateWork(req, res) {
+async function handlerUpdateWork(req, res) {
   const id = req.params.id;
   const { body } = req;
 
-  const tarea = updateWork(id, body);
+  const tarea = await updateWork(id, body);
 
   if (!tarea) {
     res.status(404).json({ message: `tarea no encontrada id ${id}` });

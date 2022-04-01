@@ -1,64 +1,31 @@
-const tareas = [
-  {
-    id: 1,
-    course: "Programacion",
-    description: "react-mongo",
-    observations: "enviar info",
-    endDate: "22 / 03 / 2022",
-  },
-  {
-    id: 2,
-    course: "Español",
-    description: "react-mongo",
-    observations: "enviar info",
-    endDate: "22 / 03 / 2022",
-  },
-  {
-    id: 3,
-    course: "Ingles",
-    description: "react-mongo",
-    observations: "enviar info",
-    endDate: "22 / 03 / 2022",
-  },
-];
+const TareasModel = require('./homework.model')
 
 function getAllWork() {
-  return tareas;
+  return TareasModel.find();
 }
 
-function getOneWork(id) {
-  const tarea = tareas.find(tarea => tarea.id === Number(id));
+async function getOneWork(id) {
+  const tarea = await TareasModel.findById(id)
   if (!tarea) {
     return null;
   }
   return tarea;
 }
-function deleteWork(id) {
-  const tarea = tareas.find((tarea) => tarea.id === Number(id));
+async function deleteWork(id) {
+  const tarea = await TareasModel.findByIdAndDelete(id)
   if (!tarea) {
     return null;
   }
 
-  tareas.splice(tareas.indexOf(tarea), 1);
   return tarea;
 }
-function createWork(tarea) {
-  tarea.id = tareas.length + 1;
-  tareas.push(tarea);
-  return tarea;
+async function createWork(tarea) {
+  const nuevaTarea = await new TareasModel(tarea);
+  return nuevaTarea.save();
 }
-function updateWork(id, tarea) {
-  tareaAnterior = tareas.find((tarea) => tarea.id === Number(id));
-
-  tareas.forEach((tareaAnterior) => {
-    if (tareaAnterior.id === Number(id)) {
-      tareaAnterior.course = tarea.course;
-      tareaAnterior.description = tarea.description;
-      tareaAnterior.observations = tarea.observations;
-      tareaAnterior.endDate = tarea.endDate;
-    }
-  });
-  return tarea;
+async function updateWork(id, tarea) {
+  const actTarea = await TareasModel.findByIdAndUpdate(id, tarea)
+  return actTarea;
 }
 
 module.exports = {
