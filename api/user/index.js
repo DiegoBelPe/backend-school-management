@@ -1,4 +1,5 @@
 const { Router } = require('express');
+const { route } = require('express/lib/application');
 
 const {
   handlerCreateUser,
@@ -11,5 +12,7 @@ const router = Router();
 router.post('/', handlerCreateUser);
 router.get('/', handlerGetAllUsers);
 router.get('/:id', handlerGetOneUser);
+router.delete('/:id')
+router.patch('/id')
 
 module.exports = router;

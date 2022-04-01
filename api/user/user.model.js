@@ -13,7 +13,7 @@ const UserSchema = new mongoose.Schema({
     type: String,
     required: true,
     trim: true,
-    uppercase: true,
+    lowercase: true,
   },
   lastName: {
     type: String,
@@ -32,8 +32,8 @@ const UserSchema = new mongoose.Schema({
   },
   role: {
     type: String,
-    default: 'viewer',
-    enum: ['company', 'admin', 'maker', 'viewer'],
+    default: 'parent',
+    enum: ['teacher', 'admin', 'parent'],
     required: true,
   },
   passwordResetToken: String,
