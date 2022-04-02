@@ -4,7 +4,7 @@ const {
   deleteWork,
   createWork,
   updateWork,
-} = require("./homework.service");
+} = require('./homework.service');
 
 async function handlerAllWork(req, res) {
   const tareas = await getAllWork();
@@ -12,17 +12,18 @@ async function handlerAllWork(req, res) {
 }
 
 async function handlerOneWork(req, res) {
-  const id = req.params.id;
+  const { id } = req.params;
+
   const tarea = await getOneWork(id);
 
-  if (!tarea) {
-    res.status(404).json({ message: "tarea no encontrada" });
-  } else {
+  if (tarea) {
     res.json(tarea);
+  } else {
+    res.status(404).json({ message: 'tarea no encontrada' });
   }
 }
 async function handlerDeleteWork(req, res) {
-  const id = req.params.id;
+  const { id } = req.params;
   const tarea = await deleteWork(id);
 
   if (!tarea) {
@@ -44,11 +45,11 @@ async function handlerCreateWork(req, res) {
     res.status(201).json({ Message: "Tarea agregada!" });
   }
 
- const tarea = await createWork(nuevaTarea)
+  const tarea = await createWork(nuevaTarea);
   return res.status(201).json(tarea);
 }
 async function handlerUpdateWork(req, res) {
-  const id = req.params.id;
+  const { id } = req.params;
   const { body } = req;
 
   const tarea = await updateWork(id, body);

@@ -1,18 +1,18 @@
-const TareasModel = require('./homework.model')
+const TareasModel = require('./homework.model');
 
 function getAllWork() {
   return TareasModel.find();
 }
 
 async function getOneWork(id) {
-  const tarea = await TareasModel.findById(id)
+  const tarea = await TareasModel.findById(id);
   if (!tarea) {
     return null;
   }
   return tarea;
 }
 async function deleteWork(id) {
-  const tarea = await TareasModel.findByIdAndDelete(id)
+  const tarea = await TareasModel.findByIdAndDelete(id);
   if (!tarea) {
     return null;
   }
@@ -24,7 +24,7 @@ async function createWork(tarea) {
   return nuevaTarea.save();
 }
 async function updateWork(id, tarea) {
-  const actTarea = await TareasModel.findByIdAndUpdate(id, tarea)
+  const actTarea = await TareasModel.findByIdAndUpdate(id, tarea);
   return actTarea;
 }
 
@@ -34,4 +34,4 @@ module.exports = {
   deleteWork,
   createWork,
   updateWork,
-}
+};
