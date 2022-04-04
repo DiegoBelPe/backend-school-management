@@ -62,11 +62,11 @@ async function handlerUpdateUser(req, res) {
 
   const user = await updateUser(id, body);
 
-  if (!user) {
-    res.status(404).json({ message: `User: ${id} not found` });
-  } else {
-    res.json({ message: `User: ${id} updated` });
-  }
+  // if (!user) {
+  //   res.status(404).json({ message: `User: ${id} not found` });
+  // } else {
+  //   res.json({ message: `User: ${id} updated` });
+  // }
   res.json(user);
 }
 
