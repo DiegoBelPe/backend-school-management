@@ -54,11 +54,11 @@ async function handlerUpdateWork(req, res) {
 
   const tarea = await updateWork(id, body);
 
-  if (!tarea) {
+  /* if (!tarea) {
     res.status(404).json({ message: `tarea no encontrada id ${id}` });
   } else {
     res.json({ message: `Tarea con el id ${id} actualizada` });
-  }
+  } */
   res.json(tarea);
 }
 
