@@ -3,6 +3,8 @@ const {
   getAllUsers,
   getUserByEmail,
   getUserById,
+  deleteUser,
+  updateUser,
 } = require('./user.service');
 
 async function handlerCreateUser(req, res) {
@@ -43,9 +45,36 @@ async function handlerGetOneUser(req, res) {
   }
 }
 
+async function handlerDeleteOneUser(req, res) {
+  const { id } = req.params;
+  const user = await deleteUser(id);
+
+  if (!user) {
+    res.status(404).json({ message: `User: ${id} not found` });
+  } else {
+    res.json({ message: `User: ${id} deleted` });
+  }
+}
+
+async function handlerUpdateUser(req, res) {
+  const { id } = req.params;
+  const { body } = req;
+
+  const user = await updateUser(id, body);
+
+  if (!user) {
+    res.status(404).json({ message: `User: ${id} not found` });
+  } else {
+    res.json({ message: `User: ${id} updated` });
+  }
+  res.json(user);
+}
+
 module.exports = {
   handlerCreateUser,
   handlerGetAllUsers,
   handlerGetUserByEmail,
   handlerGetOneUser,
-};
+  handlerDeleteOneUser,
+  handlerUpdateUser,
+}
