@@ -8,12 +8,11 @@ const {
 } = require('./user.service');
 
 async function handlerCreateUser(req, res) {
+
   const newUser = {
     ...req.body
-    // ,
-    // // eslint-disable-next-line no-underscore-dangle
-    // userId: req.user.email,
   };
+
   try {
     const user = await createUser(newUser);
 
