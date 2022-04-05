@@ -9,9 +9,10 @@ const {
 
 async function handlerCreateUser(req, res) {
   const newUser = {
-    ...req.body,
-    // eslint-disable-next-line no-underscore-dangle
-    userId: req.user.email,
+    ...req.body
+    // ,
+    // // eslint-disable-next-line no-underscore-dangle
+    // userId: req.user.email,
   };
   try {
     const user = await createUser(newUser);
@@ -23,13 +24,6 @@ async function handlerCreateUser(req, res) {
 }
 
 async function handlerGetAllUsers(req, res) {
-  const email = {
-    useremail: req.user.email,
-  };
-
-  if(!email){
-    res.status(401).json();
-  }
 
   try{
     const users = await getAllUsers();

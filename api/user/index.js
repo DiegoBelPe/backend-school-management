@@ -13,10 +13,10 @@ const { isAuthenticated, hasRole } = require('../../auth/auth.service');
 
 const router = Router();
 
-router.post('/', isAuthenticated(), handlerCreateUser);
-router.get('/', isAuthenticated(), handlerGetAllUsers);
-router.get('/:id', isAuthenticated(), handlerGetOneUser);
-router.delete('/:id', isAuthenticated(), handlerDeleteOneUser);
-router.patch('/:id', isAuthenticated(), handlerUpdateUser);
+router.post('/', hasRole(['admin']), handlerCreateUser);
+router.get('/', hasRole(['admin']), handlerGetAllUsers);
+router.get('/:id', hasRole(['admin']), handlerGetOneUser);
+router.delete('/:id', hasRole(['admin']), handlerDeleteOneUser);
+router.patch('/:id', hasRole(['admin']), handlerUpdateUser);
 
 module.exports = router;
