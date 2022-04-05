@@ -1,5 +1,5 @@
 const { Router } = require('express');
-const { route } = require('express/lib/application');
+// const { route } = require('express/lib/application');
 
 const {
   handlerCreateUser,
