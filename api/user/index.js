@@ -9,12 +9,14 @@ const {
   handlerUpdateUser,
 } = require('./user.controller');
 
+const { isAuthenticated, hasRole } = require('../../auth/auth.service');
+
 const router = Router();
 
-router.post('/', handlerCreateUser);
-router.get('/', handlerGetAllUsers);
-router.get('/:id', handlerGetOneUser);
-router.delete('/:id', handlerDeleteOneUser);
-router.patch('/:id', handlerUpdateUser);
+router.post('/', isAuthenticated(), handlerCreateUser);
+router.get('/', isAuthenticated(), handlerGetAllUsers);
+router.get('/:id', isAuthenticated(), handlerGetOneUser);
+router.delete('/:id', isAuthenticated(), handlerDeleteOneUser);
+router.patch('/:id', isAuthenticated(), handlerUpdateUser);
 
 module.exports = router;

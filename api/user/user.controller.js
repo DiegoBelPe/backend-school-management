@@ -8,7 +8,11 @@ const {
 } = require('./user.service');
 
 async function handlerCreateUser(req, res) {
-  const newUser = req.body;
+  const newUser = {
+    ...req.body,
+    // eslint-disable-next-line no-underscore-dangle
+    userId: req.user.email,
+  };
   try {
     const user = await createUser(newUser);
 
@@ -19,9 +23,21 @@ async function handlerCreateUser(req, res) {
 }
 
 async function handlerGetAllUsers(req, res) {
-  const users = await getAllUsers();
+  const email = {
+    useremail: req.user.email,
+  };
 
-  res.status(201).json(users);
+  if(!email){
+    res.status(401).json();
+  }
+
+  try{
+    const users = await getAllUsers();
+
+    res.status(200).json(users);
+  } catch (error) {
+    res.status(500).json(error);
+  }
 }
 
 async function handlerGetUserByEmail(req, res) {
