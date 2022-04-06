@@ -8,6 +8,7 @@ const authLocal = require("./auth/local");
 const homework = require("./api/homerWork");
 
 const message = require("./api/message");
+const student = require("./api/student");
 
 function routes(app) {
   // API Routes
@@ -16,6 +17,7 @@ function routes(app) {
   app.use("/api/users", user);
   app.use("/api/tareas", homework);
   app.use('/api/message', message);
+  app.use('/api/student', student);
 
   // auth Routes
   app.use("/auth/local", authLocal);
