@@ -1,5 +1,5 @@
 const { Router } = require('express');
-const { route } = require('express/lib/application');
+// const { route } = require('express/lib/application');
 
 const {
   handlerCreateUser,
@@ -9,12 +9,14 @@ const {
   handlerUpdateUser,
 } = require('./user.controller');
 
+const { isAuthenticated, hasRole } = require('../../auth/auth.service');
+
 const router = Router();
 
-router.post('/', handlerCreateUser);
-router.get('/', handlerGetAllUsers);
-router.get('/:id', handlerGetOneUser);
-router.delete('/:id', handlerDeleteOneUser);
-router.patch('/:id', handlerUpdateUser);
+router.post('/', hasRole(['admin']), handlerCreateUser);
+router.get('/', hasRole(['admin']), handlerGetAllUsers);
+router.get('/:id', hasRole(['admin']), handlerGetOneUser);
+router.delete('/:id', hasRole(['admin']), handlerDeleteOneUser);
+router.patch('/:id', hasRole(['admin']), handlerUpdateUser);
 
 module.exports = router;
