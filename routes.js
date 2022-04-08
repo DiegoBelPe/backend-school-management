@@ -20,7 +20,7 @@ function routes(app) {
   app.use('/api/student', student);
 
   // auth Routes
-  app.use("/auth/local", authLocal);
+  app.use('/login', authLocal);
   // app.use('/auth/facebook', facebookLocal);
   // app.use('/auth/google', googleLocal);
 }
