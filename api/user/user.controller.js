@@ -8,7 +8,11 @@ const {
 } = require('./user.service');
 
 async function handlerCreateUser(req, res) {
-  const newUser = req.body;
+
+  const newUser = {
+    ...req.body
+  };
+
   try {
     const user = await createUser(newUser);
 
@@ -19,9 +23,14 @@ async function handlerCreateUser(req, res) {
 }
 
 async function handlerGetAllUsers(req, res) {
-  const users = await getAllUsers();
 
-  res.status(201).json(users);
+  try{
+    const users = await getAllUsers();
+
+    res.status(200).json(users);
+  } catch (error) {
+    res.status(500).json(error);
+  }
 }
 
 async function handlerGetUserByEmail(req, res) {

@@ -50,6 +50,7 @@ function isAuthenticated() {
 
       // 7. agregar ese usuario al req.user
       req.user = user;
+      console.log(user)
       // 8. siga al siguiente middleware next()
       next();
       return null;
