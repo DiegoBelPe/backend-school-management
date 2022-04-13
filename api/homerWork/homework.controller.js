@@ -36,13 +36,13 @@ async function handlerCreateWork(req, res) {
   const nuevaTarea = req.body;
 
   if (!nuevaTarea.course) {
-    res.status(400).json({ message: "La Tarea es requerida" });
+    res.status(400).json({ message: 'La Tarea es requerida' });
   }
 
   if (!nuevaTarea.description) {
-    res.status(400).json({ message: "Descripcion es requerida" });
+    res.status(400).json({ message: 'Descripcion es requerida' });
   } else {
-    res.status(201).json({ Message: "Tarea agregada!" });
+    res.status(201).json({ Message: 'Tarea agregada!' });
   }
 
   const tarea = await createWork(nuevaTarea);
