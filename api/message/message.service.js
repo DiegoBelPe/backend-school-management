@@ -36,8 +36,6 @@ async function updateMessage(id, message){
   return updateMessage;
 }
 
-
-
 module.exports = {
     getAllMessage,
     getMessageByRemitente,
