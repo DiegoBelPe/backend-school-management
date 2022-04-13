@@ -36,6 +36,7 @@ async function handlerDeleteWork(req, res) {
 }
 async function handlerCreateWork(req, res) {
   const nuevaTarea = req.body;
+
   try {
     const tarea = await createWork(nuevaTarea);
     res.status(201).json({ message: `Tarea ${tarea}creada con exito` });
