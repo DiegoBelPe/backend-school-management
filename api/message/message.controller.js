@@ -16,7 +16,7 @@ async function handlerCreateMessage(req, res) {
     res.status(201).json(message);
 
   }catch(error){
-    console.error(error);
+    // console.error(error);
     res.status(500).json({ messaje: `Error al crear el mensaje: ${error}` });
   }
 }
