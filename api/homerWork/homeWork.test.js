@@ -17,7 +17,7 @@ describe('task Endpoints', () => {
   });
   describe('GET/tareas/:id', () => {
     test('should return 200 id OK', async () => {
-      const id = '6256fb5e810952aff49d8eb9';
+      const id = '6256fb64810952aff49d8ebb';
       const response = await request.get(`/api/tareas/${id}`);
       expect(response.statusCode).toEqual(200);
     });
