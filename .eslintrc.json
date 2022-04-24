@@ -1,8 +1,10 @@
+
 {
   "env": {
     "browser": true,
     "es2021": true,
-    "jest/globals": true
+    "node": true,
+    "jest": true
   },
   "extends": [
     "plugin:react/recommended",
@@ -38,3 +40,20 @@
     ]
   }
 }
+=======
+// {
+//   "env": {
+//     "commonjs": true,
+//     "es2021": true,
+//     "node": true
+//   },
+//   "extends": [
+//     "airbnb-base"
+//   ],
+//   "parserOptions": {
+//     "ecmaVersion": "latest"
+//   },
+//   "rules": {
+//     "func-names": 0
+//   }
+// }

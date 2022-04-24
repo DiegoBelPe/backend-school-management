@@ -17,49 +17,43 @@ async function handlerOneWork(req, res) {
   const tarea = await getOneWork(id);
 
   if (tarea) {
-    res.json(tarea);
+    res.status(200).json(tarea);
   } else {
     res.status(404).json({ message: 'tarea no encontrada' });
   }
 }
 async function handlerDeleteWork(req, res) {
   const { id } = req.params;
-  const tarea = await deleteWork(id);
 
-  if (!tarea) {
-    res.status(404).json({ message: `tarea no encontrada id ${id}` });
-  } else {
-    res.json({ message: `Tarea con el id ${id} eliminada` });
+  try {
+    await deleteWork(id);
+    res.status(200).json({ message: 'tarea eliminada' });
+  } catch (error) {
+    res.status(400).json({ message: 'Error al eliminar la tarea' });
+  } finally {
+    res.end();
   }
 }
 async function handlerCreateWork(req, res) {
   const nuevaTarea = req.body;
 
-  if (!nuevaTarea.course) {
-    res.status(400).json({ message: "La Tarea es requerida" });
+  try {
+    const tarea = await createWork(nuevaTarea);
+    res.status(201).json({ message: `Tarea ${tarea}creada con exito` });
+  } catch (error) {
+    res.status(400).json({ message: 'Error al crear la tarea' });
   }
-
-  if (!nuevaTarea.description) {
-    res.status(400).json({ message: "Descripcion es requerida" });
-  } else {
-    res.status(201).json({ Message: "Tarea agregada!" });
-  }
-
-  const tarea = await createWork(nuevaTarea);
-  return res.status(201).json(tarea);
 }
 async function handlerUpdateWork(req, res) {
   const { id } = req.params;
   const { body } = req;
 
-  const tarea = await updateWork(id, body);
-
-  /* if (!tarea) {
-    res.status(404).json({ message: `tarea no encontrada id ${id}` });
-  } else {
-    res.json({ message: `Tarea con el id ${id} actualizada` });
-  } */
-  res.json(tarea);
+  try {
+    const tarea = await updateWork(id, body);
+    res.json({ message: `Tarea ${tarea} actualizada con exito` });
+  } catch (error) {
+    res.status(400).json({ message: 'Error al actualizar la tarea' });
+  }
 }
 
 module.exports = {

@@ -23,20 +23,18 @@ async function deleteMessage(id){
 }
 
 async function createMessage(message){
-    
+
     const savedMessage = await new messageModel(message);
     console.log(savedMessage);
     return savedMessage.save();
 }
 
 async function updateMessage(id, message){
-  
+
   const updateMessage = await messageModel.findByIdAndUpdate(id, message);
 
   return updateMessage;
 }
-
-
 
 module.exports = {
     getAllMessage,
