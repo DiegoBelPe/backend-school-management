@@ -1,16 +1,40 @@
 {
   "env": {
-    "commonjs": true,
+    "browser": true,
     "es2021": true,
-    "node": true
+    "jest/globals": true
   },
   "extends": [
-    "airbnb-base"
+    "plugin:react/recommended",
+    "airbnb"
   ],
   "parserOptions": {
-    "ecmaVersion": "latest"
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "ecmaVersion": "latest",
+    "sourceType": "module"
   },
+  "plugins": [
+    "react",
+    "jest"
+  ],
   "rules": {
-    "func-names": 0
+    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+    "react/react-in-jsx-scope": "off",
+    "jest/no-disabled-tests": "warn",
+    "jest/no-focused-tests": "error",
+    "jest/no-identical-title": "error",
+    "jest/prefer-to-have-length": "warn",
+    "jest/valid-expect": "error",
+    "object-curly-newline": [
+      "error",
+      {
+        "ObjectExpression": { "consistent": true, "multiline": true },
+        "ObjectPattern": { "consistent": true, "multiline": true },
+        "ImportDeclaration": { "consistent": true, "multiline": true },
+        "ExportDeclaration": { "multiline": true, "minProperties": 3 }
+      }
+    ]
   }
 }

@@ -7,14 +7,23 @@ const {
   updateUser,
 } = require('./user.service');
 
-async function handlerCreateUser(req, res) {
+const { sendMailNodeMailer } = require('../../utils/emails');
 
-  const newUser = {
-    ...req.body
-  };
+async function handlerCreateUser(req, res) {
+  const newUser = req.body;
 
   try {
     const user = await createUser(newUser);
+
+    const email = {
+      from: '"no reply 👻" <josecastrillong@gmail.com>', // sender address
+      to: user.email, // list of receivers
+      subject: 'Activar cuenta', // Subject line
+      text: 'Activa tu cuenta haciendo click en el siguiente enlace:', // plain text body
+      html: '<b>Activa tu cuenta haciendo click en el siguiente enlace:</b>', // html body
+    };
+
+    await sendMailNodeMailer(email);
 
     res.status(201).json(user);
   } catch (error) {
