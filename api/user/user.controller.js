@@ -9,7 +9,7 @@ const {
   updateUser,
 } = require('./user.service');
 
-const { sendMailNodeMailer } = require('../../utils/emails');
+const { sendMailSendGrid } = require('../../utils/emails');
 
 async function handlerCreateUser(req, res) {
   const newUser = req.body;
@@ -27,7 +27,7 @@ async function handlerCreateUser(req, res) {
       html: '<b>Activa tu cuenta haciendo click en el siguiente enlace:</b>', // html body
     };
 
-    await sendMailNodeMailer(email);
+    await sendMailSendGrid(email);
 
     res.status(201).json(user);
   } catch (error) {

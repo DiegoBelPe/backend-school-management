@@ -1,4 +1,5 @@
 const nodemailer = require("nodemailer");
+const sgMail = require('@sendgrid/mail')
 
 async function createGoogleTransporter(){
 
@@ -31,6 +32,14 @@ async function sendMailNodeMailer(data) {
   console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));
   // Preview URL: https://ethereal.email/message/WaQKMgKddxQDoou...
 }
+
+function sendMailSendGrid(data) {
+  sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+
+  return sgMail.send(data);
+}
+
 module.exports = {
   sendMailNodeMailer,
+  sendMailSendGrid,
 };
