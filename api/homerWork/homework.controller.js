@@ -39,7 +39,7 @@ async function handlerCreateWork(req, res) {
 
   try {
     const tarea = await createWork(nuevaTarea);
-    res.status(201).json({ message: `Tarea ${tarea}creada con exito` });
+    res.status(201).json({ message: `Tarea ${tarea}creada con exito`, tarea });
   } catch (error) {
     res.status(400).json({ message: 'Error al crear la tarea' });
   }
@@ -50,7 +50,8 @@ async function handlerUpdateWork(req, res) {
 
   try {
     const tarea = await updateWork(id, body);
-    res.json({ message: `Tarea ${tarea} actualizada con exito` });
+    console.log(tarea);
+    res.json({ message: `Tarea ${tarea} actualizada con exito`, tarea });
   } catch (error) {
     res.status(400).json({ message: 'Error al actualizar la tarea' });
   }

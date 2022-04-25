@@ -23,9 +23,9 @@ async function createWork(tarea) {
   const nuevaTarea = await new TareasModel(tarea);
   return nuevaTarea.save();
 }
-async function updateWork(id, tarea) {
-  const actTarea = await TareasModel.findByIdAndUpdate(id, tarea);
-  return actTarea;
+function updateWork(id, tarea) {
+  return TareasModel.findByIdAndUpdate(id, tarea, { new: true });
+
 }
 
 module.exports = {
