@@ -57,7 +57,7 @@ async function handlerUpdateMessage(req, res) { // Patch actualizar un archivo
 
   const messages = await updateMessage(id, body);
 
-
+  console.log(body);
   // if(!messages){
   //   res.status(404).json({messaje:`Task not found whith id: ${id}`})
   // }else{
