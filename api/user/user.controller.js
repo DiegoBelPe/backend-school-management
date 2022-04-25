@@ -12,10 +12,7 @@ const {
 const { sendMailNodeMailer } = require('../../utils/emails');
 
 async function handlerCreateUser(req, res) {
-
-  const newUser = {
-    ...req.body
-  };
+  const newUser = req.body;
 
   try {
     const hash = crypto.createHash('sha256').update(newUser.email).digest('hex')
