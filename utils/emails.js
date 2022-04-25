@@ -8,8 +8,8 @@ async function createGoogleTransporter(){
    port: 465,
    secure: true, // true for 465, false for other ports
    auth: {
-     user: 'josecastrillong@gmail.com', // generated ethereal user
-     pass: 'edgjuzhoplkznxaj', // generated ethereal password
+     user: process.env.USER, // generated ethereal user
+     pass:  process.env.PASS, // generated ethereal password
    },
  });
 
