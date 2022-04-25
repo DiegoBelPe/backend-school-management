@@ -1,3 +1,5 @@
+const crypto = require('crypto');
+
 const {
   createUser,
   getAllUsers,
@@ -13,8 +15,10 @@ async function handlerCreateUser(req, res) {
   const newUser = req.body;
 
   try {
+    const hash = crypto.createHash('sha256').update(newUser.email).digest('hex')
+    newUser.passwordResetToken = hash;
+    newUser.passwordResetExpires = Date.now() + 3600000 * 24;
     const user = await createUser(newUser);
-
     const email = {
       from: '"no reply 👻" <josecastrillong@gmail.com>', // sender address
       to: user.email, // list of receivers
