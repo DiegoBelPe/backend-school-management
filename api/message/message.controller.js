@@ -50,6 +50,8 @@ async function handlerDeleteMessage(req, res) {
 
 // Actualizar mensaje
 async function handlerUpdateMessage(req, res) { // Patch actualizar un archivo
+
+  console.log(req.params.id);
   const { id } = req.params;
   const { body } = req;
 
