@@ -53,6 +53,8 @@ async function handlerUpdateMessage(req, res) { // Patch actualizar un archivo
   const { id } = req.params;
   const { body } = req;
 
+  console.log(body);
+
   const messages = await updateMessage(id, body);
 
 
