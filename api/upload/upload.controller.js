@@ -16,6 +16,16 @@ async function uploadImage (image) {
 async function uploadSigleHandler (req,res) {
   try {
     const {file} = req;
+
+    const size = file.size / 1024 / 1024;
+
+    if (size > 5) {
+      return res.status(400).json({
+        message: 'File size is too big'
+      });
+    }
+
+
     const result =await uploadImage(file.path);
 
     res.status(200).json(result);
