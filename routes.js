@@ -9,6 +9,7 @@ const homework = require("./api/homerWork");
 
 const message = require("./api/message");
 const student = require("./api/student");
+const upload = require("./api/upload");
 
 function routes(app) {
   // API Routes
@@ -18,6 +19,7 @@ function routes(app) {
   app.use("/api/tareas", homework);
   app.use('/api/message', message);
   app.use('/api/student', student);
+  app.use('/api/upload', upload);
 
   // auth Routes
   app.use('/login', authLocal);
