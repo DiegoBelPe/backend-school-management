@@ -61,7 +61,7 @@ BRF:1
 BRH:1
 end_of_record
 TN:
-SF:api\healthcheck\healthcheck.controller.js
+SF:api/healthcheck/healthcheck.controller.js
 FN:1,index
 FNF:1
 FNH:0
@@ -81,7 +81,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:api\healthcheck\index.js
+SF:api/healthcheck/index.js
 FNF:0
 FNH:0
 DA:1,1
@@ -99,7 +99,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:api\homerWork\homework.controller.js
+SF:api/homerWork/homework.controller.js
 FN:9,handlerAllWork
 FN:14,handlerOneWork
 FN:25,handlerDeleteWork
@@ -192,7 +192,7 @@ BRF:9
 BRH:9
 end_of_record
 TN:
-SF:api\homerWork\homework.model.js
+SF:api/homerWork/homework.model.js
 FNF:0
 FNH:0
 DA:1,1
@@ -224,7 +224,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:api\homerWork\homework.service.js
+SF:api/homerWork/homework.service.js
 FN:3,getAllWork
 FN:7,getOneWork
 FN:14,deleteWork
@@ -288,7 +288,7 @@ BRF:8
 BRH:8
 end_of_record
 TN:
-SF:api\homerWork\index.js
+SF:api/homerWork/index.js
 FNF:0
 FNH:0
 DA:1,1
@@ -315,7 +315,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:api\message\index.js
+SF:api/message/index.js
 FNF:0
 FNH:0
 DA:1,1
@@ -340,7 +340,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:api\message\message.controller.js
+SF:api/message/message.controller.js
 FN:10,handlerCreateMessage
 FN:24,handlerGetMessage
 FN:29,handlerGetMessageByRemitente
@@ -442,7 +442,7 @@ BRF:9
 BRH:7
 end_of_record
 TN:
-SF:api\message\message.model.js
+SF:api/message/message.model.js
 FNF:0
 FNH:0
 DA:1,1
@@ -475,7 +475,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:api\message\message.service.js
+SF:api/message/message.service.js
 FN:3,getAllMessage
 FN:7,getMessageByRemitente
 FN:16,deleteMessage
@@ -546,7 +546,7 @@ BRF:7
 BRH:5
 end_of_record
 TN:
-SF:api\student\index.js
+SF:api/student/index.js
 FNF:0
 FNH:0
 DA:1,1
@@ -573,7 +573,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:api\student\student.controller.js
+SF:api/student/student.controller.js
 FN:9,handlerAllStudent
 FN:14,handlerOneStudent
 FN:25,handlerDeleteStudent
@@ -664,7 +664,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:api\student\student.model.js
+SF:api/student/student.model.js
 FNF:0
 FNH:0
 DA:1,1
@@ -705,7 +705,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:api\student\student.service.js
+SF:api/student/student.service.js
 FN:3,getAllStudent
 FN:7,getOneStudent
 FN:14,deleteStudent
@@ -761,7 +761,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:api\task\index.js
+SF:api/task/index.js
 FNF:0
 FNH:0
 DA:1,1
@@ -790,7 +790,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:api\task\task.controller.js
+SF:api/task/task.controller.js
 FN:9,handlerAllTask
 FN:14,handlerOneTask
 FN:25,handlerDeleteTask
@@ -888,7 +888,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:api\task\task.model.js
+SF:api/task/task.model.js
 FNF:0
 FNH:0
 DA:1,1
@@ -924,7 +924,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:api\task\task.service.js
+SF:api/task/task.service.js
 FN:7,getAllTask
 FN:16,getOneTask
 FN:28,deleteTask
@@ -1002,7 +1002,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:api\user\index.js
+SF:api/user/index.js
 FNF:0
 FNH:0
 DA:1,1
@@ -1033,7 +1033,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:api\user\user.controller.js
+SF:api/user/user.controller.js
 FN:10,handlerCreateUser
 FN:25,handlerGetAllUsers
 FN:36,handlerGetUserByEmail
@@ -1143,7 +1143,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:api\user\user.model.js
+SF:api/user/user.model.js
 FN:61,Object.<anonymous>.UserSchema.methods.comparePassword
 FNF:1
 FNH:0
@@ -1233,7 +1233,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:api\user\user.service.js
+SF:api/user/user.service.js
 FN:3,getUserById
 FN:8,getUserByEmail
 FN:13,createUser
@@ -1302,7 +1302,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:auth\auth.service.js
+SF:auth/auth.service.js
 FN:11,validateToken
 FN:25,isAuthenticated
 FN:64,hasRole
@@ -1418,7 +1418,7 @@ BRF:2
 BRH:2
 end_of_record
 TN:
-SF:auth\local\index.js
+SF:auth/local/index.js
 FNF:0
 FNH:0
 DA:1,1
@@ -1439,7 +1439,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:auth\local\local.controller.js
+SF:auth/local/local.controller.js
 FN:4,handlerLoginUser
 FNF:1
 FNH:0
@@ -1479,7 +1479,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:config\database.js
+SF:config/database.js
 FN:5,connectDB
 FNF:1
 FNH:1
@@ -1508,23 +1508,25 @@ BRF:2
 BRH:1
 end_of_record
 TN:
-SF:config\express.js
-FN:4,configExpress
+SF:config/express.js
+FN:5,configExpress
 FNF:1
 FNH:1
 FNDA:2,configExpress
 DA:1,1
 DA:2,1
 DA:3,1
-DA:4,2
+DA:4,1
 DA:5,2
 DA:6,2
 DA:7,2
-DA:8,1
-DA:9,1
-LF:9
-LH:9
-BRDA:4,0,0,2
+DA:8,2
+DA:9,2
+DA:10,1
+DA:11,1
+LF:11
+LH:11
+BRDA:5,0,0,2
 BRF:1
 BRH:1
 end_of_record

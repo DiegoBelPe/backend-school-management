@@ -1,4 +1,4 @@
-const StudentModel = require('./student.model');
+const StudentModel = require("./student.model");
 
 function getAllStudent() {
   return StudentModel.find();
@@ -16,8 +16,6 @@ async function deleteStudent(id) {
   if (!student) {
     return null;
   }
-
-  return student;
 }
 async function createStudent(student) {
   const newStudent = await new StudentModel(student);
