@@ -9,6 +9,7 @@ const homework = require("./api/homerWork");
 
 const message = require("./api/message");
 const student = require("./api/student");
+const upload = require("./api/upload");
 const checkout = require("./api/checkout");
 
 function routes(app) {
@@ -17,9 +18,9 @@ function routes(app) {
   app.use("/api/tasks", task);
   app.use("/api/users", user);
   app.use("/api/tareas", homework);
-  app.use("/api/message", message);
-  app.use("/api/student", student);
-
+  app.use('/api/message', message);
+  app.use('/api/student', student);
+  app.use('/api/upload', upload);
   app.use("/api/checkout", checkout);
 
   // auth Routes
