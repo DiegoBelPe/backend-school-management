@@ -16,7 +16,7 @@ async function handlerCheckout(req, res) {
       description: 'Pago pension',
     });
 
-    console.log(payment);
+    /* console.log(payment); */
     res.json(payment)
   } catch (error) {
     console.log("error", error)
