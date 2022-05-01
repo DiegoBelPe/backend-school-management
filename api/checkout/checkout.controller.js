@@ -1,4 +1,4 @@
-const Stripe = require('stripe');
+const Stripe = require("stripe");
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY);
 
@@ -11,20 +11,18 @@ async function handlerCheckout(req, res) {
     const payment = await stripe.paymentIntents.create({
       payment_method: id,
       amount,
-      currency: 'usd',
+      currency: "usd",
       confirm: true,
-      description: 'Pago pension',
+      description: "Pago pension",
     });
 
-    console.log(payment);
-    res.json(payment)
+    res.json(payment);
   } catch (error) {
-    console.log("error", error)
-    res.status(500).json(error)
+    console.log("error", error);
+    res.status(500).json(error);
   }
-
 }
 
 module.exports = {
   handlerCheckout,
-}
+};
