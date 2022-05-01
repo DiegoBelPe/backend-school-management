@@ -5,6 +5,6 @@ const { handlerCheckout } = require('./checkout.controller')
 const router = Router();
 
 
-router.post('/api/checkout', handlerCheckout);
+router.post('/', handlerCheckout);
 
 module.exports = router;

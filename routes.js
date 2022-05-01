@@ -21,7 +21,7 @@ function routes(app) {
   app.use('/api/message', message);
   app.use('/api/student', student);
   app.use('/api/upload', upload);
-  app.use("/api/checkout", checkout);
+  app.use('/api/checkout', checkout);
 
   // auth Routes
   app.use("/login", authLocal);
