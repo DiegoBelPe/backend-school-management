@@ -4,6 +4,7 @@ const {
   deleteGrade,
   createGrade,
   updateGrade,
+  createHomeWorkGrade,
 } = require('./grade.service');
 
 async function handlerAllGrade(req, res) {
@@ -63,10 +64,24 @@ async function handlerUpdateGrade(req, res) {
 
 }
 
+async function handlerCreateHomeWorkGrade(req, res) {
+  const { id } = req.params;
+  const { body } = req;
+
+  const task = await createHomeWorkGrade(id, body);
+  if(!task) {
+    res.status(404).json({ message: `Grado no encontrado id ${id}` });
+  }else {
+    res.json({ message: `Grado con el id ${id} actualizado` });
+  }
+
+}
+
 module.exports = {
   handlerAllGrade,
   handlerOneGrade,
   handlerDeleteGrade,
   handlerCreateGrade,
   handlerUpdateGrade,
+  handlerCreateHomeWorkGrade,
 };

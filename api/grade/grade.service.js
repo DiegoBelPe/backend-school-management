@@ -26,10 +26,18 @@ async function updateGrade(id, grade) {
   return updGrade;
 }
 
+async function createHomeWorkGrade(id, task){
+
+  const homeWork = await GradeModel.findByIdAndUpdate(id, {$push:{homeWorks: task}}, {new: true});
+
+  return homeWork;
+}
+
 module.exports = {
   getAllGrade,
   getOneGrade,
   deleteGrade,
   createGrade,
   updateGrade,
+  createHomeWorkGrade,
 };
