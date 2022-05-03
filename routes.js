@@ -11,6 +11,7 @@ const message = require("./api/message");
 const student = require("./api/student");
 const upload = require("./api/upload");
 const checkout = require("./api/checkout");
+const grade = require("./api/grade");
 
 function routes(app) {
   // API Routes
@@ -22,6 +23,7 @@ function routes(app) {
   app.use('/api/student', student);
   app.use('/api/upload', upload);
   app.use('/api/checkout', checkout);
+  app.use('/api/grade', grade);
 
   // auth Routes
   app.use("/login", authLocal);
