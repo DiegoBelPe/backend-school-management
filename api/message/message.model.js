@@ -14,6 +14,7 @@ const MessageSchema = new moongose.Schema({
         type: String,
         lowercase: true,
     }
+    
 },
 // {
 //     timestamps: true,

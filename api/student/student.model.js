@@ -22,6 +22,7 @@ const StudentSchema = new moongose.Schema(
       required: true,
       lowercase: true,
     },
+    
   },
   {
     toJSON: { virtuals: true },
