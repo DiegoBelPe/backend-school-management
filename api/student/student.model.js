@@ -1,6 +1,6 @@
-const moongose = require("mongoose");
+const mongoose = require("mongoose");
 
-const MessageSchema = new moongose.Schema({
+const MessageSchema = new mongoose.Schema({
   remitente:{
     type: String,
     required: true,
@@ -16,7 +16,7 @@ const MessageSchema = new moongose.Schema({
   },
 });
 
-const StudentSchema = new moongose.Schema(
+const StudentSchema = new mongoose.Schema(
   {
     name: {
       type: String,
@@ -41,7 +41,6 @@ const StudentSchema = new moongose.Schema(
     mensajes:[
       MessageSchema
     ],
-
   },
   {
     toJSON: { virtuals: true },
@@ -50,6 +49,6 @@ const StudentSchema = new moongose.Schema(
 );
 
 
-module.exports = moongose.model("Student", StudentSchema);
+module.exports = mongoose.model("Student", StudentSchema);
 
 
