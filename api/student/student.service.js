@@ -26,10 +26,18 @@ async function updateStudent(id, student) {
   return updStudent;
 }
 
+async function createMessageStudent(id, message){
+
+  const student = await StudentModel.findByIdAndUpdate(id, {$push:{mensajes: message}}, {new: true});
+
+  return student;
+}
+
 module.exports = {
   getAllStudent,
   getOneStudent,
   deleteStudent,
   createStudent,
   updateStudent,
+  createMessageStudent ,
 };

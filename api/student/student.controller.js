@@ -4,6 +4,7 @@ const {
   deleteStudent,
   createStudent,
   updateStudent,
+  createMessageStudent,
 } = require('./student.service');
 
 async function handlerAllStudent(req, res) {
@@ -63,10 +64,24 @@ async function handlerUpdateStudent(req, res) {
 
 }
 
+async function  handlerCreateMessage(req, res) {
+  const { id } = req.params;
+  const { body } = req;
+
+  const mensaje = await createMessageStudent(id, body);
+  if(!mensaje) {
+    res.status(404).json({ message: `Estudiante no encontrado id ${id}` });
+  }else {
+    res.json({ message: `Estudiante con el id ${id} actualizado` });
+  }
+}
+
+
 module.exports = {
   handlerAllStudent,
   handlerOneStudent,
   handlerDeleteStudent,
   handlerCreateStudent,
   handlerUpdateStudent,
+  handlerCreateMessage,
 };
