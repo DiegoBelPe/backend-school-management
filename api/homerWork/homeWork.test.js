@@ -82,5 +82,5 @@ describe('task Endpoints', () => {
       expect(response.statusCode).toEqual(400);
       expect(response.body).toEqual({ message: 'Error al eliminar la tarea' });
     });
-  });
 });
+

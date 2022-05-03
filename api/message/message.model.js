@@ -14,12 +14,12 @@ const MessageSchema = new moongose.Schema({
         type: String,
         lowercase: true,
     }
-    
+
 },
-// {
-//     timestamps: true,
-//     versionKey:false,
-// }
+{
+    timestamps: true,
+    versionKey:false,
+}
 );
 
 module.exports = moongose.model('Message', MessageSchema);

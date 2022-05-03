@@ -1,6 +1,22 @@
-const moongose = require("mongoose");
+const mongoose = require("mongoose");
 
-const StudentSchema = new moongose.Schema(
+const MessageSchema = new mongoose.Schema({
+  remitente:{
+    type: String,
+    required: true,
+    lowercase: true,
+  },
+  asunto:{
+      type: String,
+      lowercase: true,
+  },
+  mensaje:{
+      type: String,
+      lowercase: true,
+  },
+});
+
+const StudentSchema = new mongoose.Schema(
   {
     name: {
       type: String,
@@ -22,7 +38,9 @@ const StudentSchema = new moongose.Schema(
       required: true,
       lowercase: true,
     },
-    
+    mensajes:[
+      MessageSchema
+    ],
   },
   {
     toJSON: { virtuals: true },
@@ -30,4 +48,7 @@ const StudentSchema = new moongose.Schema(
   }
 );
 
-module.exports = moongose.model("Student", StudentSchema);
+
+module.exports = mongoose.model("Student", StudentSchema);
+
+
