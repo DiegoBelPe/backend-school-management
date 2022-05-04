@@ -29,6 +29,10 @@ const GradeSchema = new mongoose.Schema(
     homeWorks: [
       TareaSchema
     ],
+    students: [{
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Student"
+    }],
   },
   {
     toJSON: { virtuals: true },

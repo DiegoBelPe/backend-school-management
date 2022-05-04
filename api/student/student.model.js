@@ -1,18 +1,19 @@
 const mongoose = require("mongoose");
 
+
 const MessageSchema = new mongoose.Schema({
-  remitente:{
+  remitente: {
     type: String,
     required: true,
     lowercase: true,
   },
-  asunto:{
-      type: String,
-      lowercase: true,
+  asunto: {
+    type: String,
+    lowercase: true,
   },
-  mensaje:{
-      type: String,
-      lowercase: true,
+  mensaje: {
+    type: String,
+    lowercase: true,
   },
 });
 
@@ -33,14 +34,10 @@ const StudentSchema = new mongoose.Schema(
       required: true,
       lowercase: true,
     },
-    grade: {
-      type: Number,
-      required: true,
-      lowercase: true,
-    },
-    mensajes:[
-      MessageSchema
+    gradeId: [
+      { type: mongoose.Schema.Types.ObjectId, ref: "Grade" }
     ],
+    mensajes: [MessageSchema],
   },
   {
     toJSON: { virtuals: true },
@@ -48,7 +45,4 @@ const StudentSchema = new mongoose.Schema(
   }
 );
 
-
 module.exports = mongoose.model("Student", StudentSchema);
-
-
