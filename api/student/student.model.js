@@ -35,7 +35,9 @@ const StudentSchema = new mongoose.Schema(
       lowercase: true,
     },
     gradeId: [
-      { type: mongoose.Schema.Types.ObjectId, ref: "Grade" }
+      { type: mongoose.Schema.Types.ObjectId,
+        ref: "Grade"
+      }
     ],
     mensajes: [MessageSchema],
   },

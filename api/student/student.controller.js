@@ -79,19 +79,15 @@ async function  handlerCreateMessage(req, res) {
 }
 
 
-async function handlerGetAllTask(req, res) {
+async function handlerGetAllTask( req, res ) {
   const { id } = req.params;
-
-  const task = await getHomeWorkStudent(id);
-  if(!task) {
+  const student = await getHomeWorkStudent(id);
+  if(!student) {
     res.status(404).json({ message: `Estudiante no encontrado id ${id}` });
   }else {
-    res.json({ message: `Tareas con el id ${id} desplegadas con exito` });
+    res.json(student);
   }
 }
-
-
-
 
 module.exports = {
   handlerAllStudent,
