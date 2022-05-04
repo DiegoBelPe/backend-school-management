@@ -1,12 +1,38 @@
-const moongose = require("mongoose");
+const mongoose = require("mongoose");
 
-const GradeSchema = new moongose.Schema(
+const TareaSchema = new mongoose.Schema({
+  course: {
+    type: String,
+    required: true,
+  },
+  description: {
+    type: String,
+    required: true,
+  },
+  observations: {
+    type: String,
+    required: true,
+  },
+  endDate: {
+    type: String,
+    required: true,
+  },
+});
+
+const GradeSchema = new mongoose.Schema(
   {
     grade: {
       type: Number,
       required: true,
       default: 301,
     },
+    homeWorks: [
+      TareaSchema
+    ],
+    students: [{
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Student"
+    }],
   },
   {
     toJSON: { virtuals: true },
@@ -14,4 +40,4 @@ const GradeSchema = new moongose.Schema(
   }
 );
 
-module.exports = moongose.model("Grade", GradeSchema);
+module.exports = mongoose.model("Grade", GradeSchema);

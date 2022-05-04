@@ -5,6 +5,8 @@ const {
   createStudent,
   updateStudent,
   createMessageStudent,
+  getHomeWorkStudent,
+
 } = require('./student.service');
 
 async function handlerAllStudent(req, res) {
@@ -77,6 +79,20 @@ async function  handlerCreateMessage(req, res) {
 }
 
 
+async function handlerGetAllTask(req, res) {
+  const { id } = req.params;
+
+  const task = await getHomeWorkStudent(id);
+  if(!task) {
+    res.status(404).json({ message: `Estudiante no encontrado id ${id}` });
+  }else {
+    res.json({ message: `Tareas con el id ${id} desplegadas con exito` });
+  }
+}
+
+
+
+
 module.exports = {
   handlerAllStudent,
   handlerOneStudent,
@@ -84,4 +100,5 @@ module.exports = {
   handlerCreateStudent,
   handlerUpdateStudent,
   handlerCreateMessage,
+  handlerGetAllTask,
 };

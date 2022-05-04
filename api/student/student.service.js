@@ -33,11 +33,17 @@ async function createMessageStudent(id, message){
   return student;
 }
 
+async function getHomeWorkStudent(){
+  const homeWork = await StudentModel.find().populate('Grade', 'homeWorks');
+  return homeWork;
+
+}
 module.exports = {
   getAllStudent,
   getOneStudent,
   deleteStudent,
   createStudent,
   updateStudent,
-  createMessageStudent ,
+  createMessageStudent,
+  getHomeWorkStudent,
 };
