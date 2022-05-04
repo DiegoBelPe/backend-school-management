@@ -33,11 +33,13 @@ async function createMessageStudent(id, message){
   return student;
 }
 
-async function getHomeWorkStudent(){
-  const homeWork = await StudentModel.find().populate('Grade', 'homeWorks');
-  return homeWork;
 
+
+async function getHomeWorkStudent( id ){
+  const homeWork = await StudentModel.findById(id).populate({ path: 'gradeId', select: 'homeWorks' });
+  return homeWork;
 }
+
 module.exports = {
   getAllStudent,
   getOneStudent,

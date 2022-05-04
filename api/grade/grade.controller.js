@@ -74,7 +74,6 @@ async function handlerCreateHomeWorkGrade(req, res) {
   }else {
     res.json({ message: `Grado con el id ${id} actualizado` });
   }
-
 }
 
 module.exports = {
