@@ -40,6 +40,11 @@ async function getHomeWorkStudent( id ){
   return homeWork;
 }
 
+async function getAllMessageStudent( id ){
+  const messages = await StudentModel.findById(id).populate({ path: 'mensajes', select: 'remitente asunto mensaje' });
+  return messages;
+}
+
 module.exports = {
   getAllStudent,
   getOneStudent,
@@ -48,4 +53,5 @@ module.exports = {
   updateStudent,
   createMessageStudent,
   getHomeWorkStudent,
+  getAllMessageStudent
 };
