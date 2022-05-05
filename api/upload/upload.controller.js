@@ -1,5 +1,4 @@
 const fs = require('fs');
-
 const cloudinary = require('cloudinary').v2;
 
 async function uploadImage (image) {

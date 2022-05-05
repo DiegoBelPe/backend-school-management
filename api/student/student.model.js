@@ -40,6 +40,10 @@ const StudentSchema = new mongoose.Schema(
       }
     ],
     mensajes: [MessageSchema],
+    avatar: {
+      type: String,
+      default: 'https://res.cloudinary.com/borismg04/image/upload/v1651633044/jcs7g28mquibdzxxq2sc.png',
+    },
   },
   {
     toJSON: { virtuals: true },
