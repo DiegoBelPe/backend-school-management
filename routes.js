@@ -25,6 +25,7 @@ function routes(app) {
   app.use('/api/checkout', checkout);
   app.use('/api/grade', grade);
 
+
   // auth Routes
   app.use("/login", authLocal);
   // app.use('/auth/facebook', facebookLocal);

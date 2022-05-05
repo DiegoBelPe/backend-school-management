@@ -7,6 +7,7 @@ const {
   handlerUpdateStudent,
   handlerCreateMessage,
   handlerGetAllTask,
+  handlerGetAllMessage
 } = require('./student.controller');
 
 const router = Router();
@@ -18,5 +19,6 @@ router.post('/', handlerCreateStudent);
 router.patch('/:id', handlerUpdateStudent);
 router.patch('/message/:id', handlerCreateMessage);
 router.get('/task/:id', handlerGetAllTask);
+router.get('/message/:id', handlerGetAllMessage);
 
 module.exports = router;
