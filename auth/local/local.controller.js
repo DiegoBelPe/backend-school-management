@@ -6,6 +6,7 @@ async function handlerLoginUser(req, res) {
 
   try {
     const user = await getUserByEmail(email);
+    console.log(user);
 
     if (!user) {
       return res.status(401).json({ message: 'Invalid email or password' });
@@ -17,8 +18,13 @@ async function handlerLoginUser(req, res) {
     }
 
     const token = signToken(user.profile);
+    const student = user.student
+    const response = {
+      token: token,
+      studentId: student
+    }
 
-    return res.status(200).json(token);
+    return res.status(200).json(response);
   } catch (error) {
     return res.status(400).json(error);
   }
