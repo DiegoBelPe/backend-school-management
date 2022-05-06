@@ -21,7 +21,8 @@ async function handlerLoginUser(req, res) {
     const student = user.student
     const response = {
       token: token,
-      studentId: student
+      studentId: student,
+      grade: student.gradeId,
     }
 
     return res.status(200).json(response);
