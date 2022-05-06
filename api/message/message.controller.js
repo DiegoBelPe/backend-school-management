@@ -16,7 +16,7 @@ async function handlerCreateMessage(req, res) {
     res.status(201).json(message);
 
   }catch(error){
-    console.error(error);
+    // console.error(error);
     res.status(500).json({ messaje: `Error al crear el mensaje: ${error}` });
   }
 }
@@ -50,14 +50,14 @@ async function handlerDeleteMessage(req, res) {
 
 // Actualizar mensaje
 async function handlerUpdateMessage(req, res) { // Patch actualizar un archivo
+
+  console.log(req.params.id);
   const { id } = req.params;
   const { body } = req;
 
-  console.log(body);
-
   const messages = await updateMessage(id, body);
 
-
+  console.log(body);
   // if(!messages){
   //   res.status(404).json({messaje:`Task not found whith id: ${id}`})
   // }else{

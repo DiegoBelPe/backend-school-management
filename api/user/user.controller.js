@@ -26,10 +26,11 @@ async function handlerCreateUser(req, res) {
       subject: 'Activar cuenta', // Subject line
       template_id:'d-bdf7a859ebb544e1891849b176871bea',
       dynamic_template_data: {
-        url: `school-management-system-pi.vercel.app/verify-account/${hash}`,
+        url: `http://localhost:3000/verify-account/${hash}`,
       }
     };
 
+    // url: `school-management-system-pi.vercel.app/verify-account/${hash}`,
     await sendMailSendGrid(email);
 
     res.status(201).json(user);

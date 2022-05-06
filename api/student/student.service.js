@@ -1,4 +1,4 @@
-const StudentModel = require('./student.model');
+const StudentModel = require("./student.model");
 
 function getAllStudent() {
   return StudentModel.find();
@@ -16,8 +16,6 @@ async function deleteStudent(id) {
   if (!student) {
     return null;
   }
-
-  return student;
 }
 async function createStudent(student) {
   const newStudent = await new StudentModel(student);
@@ -28,10 +26,32 @@ async function updateStudent(id, student) {
   return updStudent;
 }
 
+async function createMessageStudent(id, message){
+
+  const student = await StudentModel.findByIdAndUpdate(id, {$push:{mensajes: message}}, {new: true});
+
+  return student;
+}
+
+
+
+async function getHomeWorkStudent( id ){
+  const homeWork = await StudentModel.findById(id).populate({ path: 'gradeId', select: 'homeWorks' });
+  return homeWork;
+}
+
+async function getAllMessageStudent( id ){
+  const messages = await StudentModel.findById(id).populate({ path: 'mensajes', select: 'remitente asunto mensaje' });
+  return messages;
+}
+
 module.exports = {
   getAllStudent,
   getOneStudent,
   deleteStudent,
   createStudent,
   updateStudent,
+  createMessageStudent,
+  getHomeWorkStudent,
+  getAllMessageStudent
 };
