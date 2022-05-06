@@ -36,6 +36,12 @@ const UserSchema = new mongoose.Schema({
     enum: ['teacher', 'admin', 'parent'],
     required: true,
   },
+  student: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Student"
+    }
+  ],
   passwordResetToken: String,
   passwordResetExpires: Date,
 }, {
