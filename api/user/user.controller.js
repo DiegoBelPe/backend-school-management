@@ -9,7 +9,7 @@ const {
   updateUser,
 } = require('./user.service');
 
-const { sendMailNodeMailer } = require('../../utils/emails');
+const { sendMailSendGrid } = require('../../utils/emails');
 
 async function handlerCreateUser(req, res) {
   const newUser = req.body;
@@ -19,15 +19,19 @@ async function handlerCreateUser(req, res) {
     newUser.passwordResetToken = hash;
     newUser.passwordResetExpires = Date.now() + 3600000 * 24;
     const user = await createUser(newUser);
+
     const email = {
       from: '"no reply 👻" <josecastrillong@gmail.com>', // sender address
       to: user.email, // list of receivers
       subject: 'Activar cuenta', // Subject line
-      text: 'Activa tu cuenta haciendo click en el siguiente enlace:', // plain text body
-      html: '<b>Activa tu cuenta haciendo click en el siguiente enlace:</b>', // html body
+      template_id:'d-bdf7a859ebb544e1891849b176871bea',
+      dynamic_template_data: {
+        url: `http://localhost:3000/verify-account/${hash}`,
+      }
     };
 
-    await sendMailNodeMailer(email);
+    // url: `school-management-system-pi.vercel.app/verify-account/${hash}`,
+    await sendMailSendGrid(email);
 
     res.status(201).json(user);
   } catch (error) {
