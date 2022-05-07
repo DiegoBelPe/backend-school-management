@@ -5,7 +5,7 @@ const {
   createGrade,
   updateGrade,
   createHomeWorkGrade,
-  getAllMessageGrade,
+  getAllMessageGrade
 } = require('./grade.service');
 
 async function handlerAllGrade(req, res) {
@@ -86,6 +86,8 @@ async function handlerGetMessageGrade( req, res ) {
     res.json(messages);
   }
 }
+
+
 
 module.exports = {
   handlerAllGrade,

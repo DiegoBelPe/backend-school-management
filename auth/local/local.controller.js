@@ -20,11 +20,17 @@ async function handlerLoginUser(req, res) {
     const token = signToken(user.profile);
     const student = user.student
     const role = user.role;
+    const gradeId = user.gradeId;
+    const homeWorks = user.gradeId.homeWorks;
+    const messages = user.gradeId.mensajes;
     const response = {
       token: token,
       studentId: student,
       grade: student.gradeId,
       rol: role,
+      gradeId: gradeId,
+      homeWorks: homeWorks,
+      messages: messages,
     }
 
     return res.status(200).json(response);
