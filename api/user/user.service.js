@@ -6,7 +6,7 @@ async function getUserById(id) {
 }
 
 async function getUserByEmail(email) {
-  const user = await User.findOne({ email }).populate({ path: 'student', select: 'id' });
+  const user = await User.findOne({ email }).populate({ path: 'student', select: 'id gradeId' });
   return user;
 }
 
