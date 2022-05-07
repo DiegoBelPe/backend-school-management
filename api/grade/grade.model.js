@@ -33,6 +33,10 @@ const GradeSchema = new mongoose.Schema(
       type: mongoose.Schema.Types.ObjectId,
       ref: "Student"
     }],
+    admin: [{
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User"
+    }],
   },
   {
     toJSON: { virtuals: true },
