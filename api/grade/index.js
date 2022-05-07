@@ -6,6 +6,7 @@ const {
   handlerCreateGrade,
   handlerUpdateGrade,
   handlerCreateHomeWorkGrade,
+  handlerGetMessageGrade,
 } = require('./grade.controller');
 
 const router = Router();
@@ -16,5 +17,6 @@ router.delete('/:id', handlerDeleteGrade);
 router.post('/', handlerCreateGrade);
 router.patch('/:id', handlerUpdateGrade);
 router.patch('/homeWork/:id', handlerCreateHomeWorkGrade);
+router.get('/messages/:id', handlerGetMessageGrade);
 
 module.exports = router;
