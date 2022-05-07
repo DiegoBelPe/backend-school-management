@@ -26,22 +26,29 @@ async function updateStudent(id, student) {
   return updStudent;
 }
 
-async function createMessageStudent(id, message){
-
-  const student = await StudentModel.findByIdAndUpdate(id, {$push:{mensajes: message}}, {new: true});
+async function createMessageStudent(id, message) {
+  const student = await StudentModel.findByIdAndUpdate(
+    id,
+    { $push: { mensajes: message } },
+    { new: true }
+  );
 
   return student;
 }
 
-
-
-async function getHomeWorkStudent( id ){
-  const homeWork = await StudentModel.findById(id).populate({ path: 'gradeId', select: 'homeWorks' });
+async function getHomeWorkStudent(id) {
+  const homeWork = await StudentModel.findById(id).populate({
+    path: "gradeId",
+    select: "homeWorks",
+  });
   return homeWork;
 }
 
-async function getAllMessageStudent( id ){
-  const messages = await StudentModel.findById(id).populate({ path: 'mensajes', select: 'remitente asunto mensaje' });
+async function getAllMessageStudent(id) {
+  const messages = await StudentModel.findById(id).populate({
+    path: "mensajes",
+    select: "remitente asunto mensaje",
+  });
   return messages;
 }
 
@@ -53,5 +60,5 @@ module.exports = {
   updateStudent,
   createMessageStudent,
   getHomeWorkStudent,
-  getAllMessageStudent
+  getAllMessageStudent,
 };

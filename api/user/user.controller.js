@@ -7,6 +7,7 @@ const {
   getUserById,
   deleteUser,
   updateUser,
+  getGradeById,
 } = require('./user.service');
 
 const { sendMailSendGrid } = require('../../utils/emails');
