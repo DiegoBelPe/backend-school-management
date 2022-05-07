@@ -1,5 +1,21 @@
 const mongoose = require("mongoose");
 
+const MessageSchema = new mongoose.Schema({
+  remitente: {
+    type: String,
+    required: true,
+    lowercase: true,
+  },
+  asunto: {
+    type: String,
+    lowercase: true,
+  },
+  mensaje: {
+    type: String,
+    lowercase: true,
+  },
+});
+
 const TareaSchema = new mongoose.Schema({
   course: {
     type: String,
@@ -33,6 +49,11 @@ const GradeSchema = new mongoose.Schema(
       type: mongoose.Schema.Types.ObjectId,
       ref: "Student"
     }],
+    admin: [{
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User"
+    }],
+    mensajes: [MessageSchema],
   },
   {
     toJSON: { virtuals: true },

@@ -1,6 +1,5 @@
 const mongoose = require("mongoose");
 
-
 const MessageSchema = new mongoose.Schema({
   remitente: {
     type: String,
@@ -34,16 +33,8 @@ const StudentSchema = new mongoose.Schema(
       required: true,
       lowercase: true,
     },
-    parentId: [
-      { type: mongoose.Schema.Types.ObjectId,
-        ref: "User"
-      }
-    ],
-    gradeId: [
-      { type: mongoose.Schema.Types.ObjectId,
-        ref: "Grade"
-      }
-    ],
+    parentId: [{ type: mongoose.Schema.Types.ObjectId, ref: "User" }],
+    gradeId: [{ type: mongoose.Schema.Types.ObjectId, ref: "Grade" }],
     mensajes: [MessageSchema],
     avatar: {
       type: String,
