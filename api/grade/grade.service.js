@@ -34,6 +34,12 @@ async function createHomeWorkGrade(id, task){
 }
 
 
+async function getAllMessageGrade( id ){
+  const messages = await GradeModel.findById(id).populate({ path: 'mensajes', select: 'remitente asunto mensaje' });
+  return messages;
+}
+
+
 module.exports = {
   getAllGrade,
   getOneGrade,
@@ -41,4 +47,5 @@ module.exports = {
   createGrade,
   updateGrade,
   createHomeWorkGrade,
+  getAllMessageGrade,
 };
