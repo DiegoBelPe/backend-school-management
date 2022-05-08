@@ -5,8 +5,8 @@ const {
   createGrade,
   updateGrade,
   createHomeWorkGrade,
-  getAllMessageGrade
-} = require('./grade.service');
+  getAllMessageGrade,
+} = require("./grade.service");
 
 async function handlerAllGrade(req, res) {
   const grades = await getAllGrade();
@@ -21,7 +21,7 @@ async function handlerOneGrade(req, res) {
   if (grade) {
     res.json(grade);
   } else {
-    res.status(404).json({ message: 'Grado no encontrado' });
+    res.status(404).json({ message: "Grado no encontrado" });
   }
 }
 async function handlerDeleteGrade(req, res) {
@@ -40,54 +40,61 @@ async function handlerCreateGrade(req, res) {
   try {
     const newGrade = await createGrade(body);
     if (!newGrade) {
-      res.status(404).json({ message: 'Grado no creado' });
+      res.status(404).json({ message: "Grado no creado" });
+    } else {
+      res.status(201).json({ message: "Grado creado" });
     }
-    else {
-      res.status(201).json({ message: 'Grado creado' });
-    }
-
   } catch (error) {
-    res.status(500).json({ message: 'Error al crear el grado, se requieren todos los espacios' });
-
+    res
+      .status(500)
+      .json({
+        message: "Error al crear el grado, se requieren todos los espacios",
+      });
   }
-
 }
 async function handlerUpdateGrade(req, res) {
   const { id } = req.params;
   const { body } = req;
 
   const grade = await updateGrade(id, body);
-  if(!grade) {
+  if (!grade) {
     res.status(404).json({ message: `Grado no encontrado id ${id}` });
-  }else {
+  } else {
     res.json({ message: `Grado con el id ${id} actualizado` });
   }
-
 }
 
-async function handlerCreateHomeWorkGrade(req, res) {
+async function handlerCreateHomeWorkGrade(req, res, next) {
   const { id } = req.params;
-  const { body } = req;
+  const course = req.body.course;
+  const description = req.body.description;
+  const observations = req.body.observations;
+  const endDate = req.body.endDate;
 
-  const task = await createHomeWorkGrade(id, body);
-  if(!task) {
+  const newHomeWork = {
+    course: course,
+    description: description,
+    observations: observations,
+    endDate: endDate,
+  };
+
+  const task = await createHomeWorkGrade(id, newHomeWork);
+  if (!task) {
     res.status(404).json({ message: `Grado no encontrado id ${id}` });
-  }else {
+  } else {
     res.json({ message: `Grado con el id ${id} actualizado` });
   }
 }
 
-async function handlerGetMessageGrade( req, res ) {
+async function handlerGetMessageGrade(req, res) {
   const { id } = req.params;
   const messages = await getAllMessageGrade(id);
-  if(!messages) {
+  if (!messages) {
     res.status(404).json({ message: `Grado no encontrado id ${id}` });
-  }else {
+  } else {
     res.json(messages);
   }
 }
-
-
 
 module.exports = {
   handlerAllGrade,
