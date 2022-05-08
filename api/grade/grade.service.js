@@ -25,15 +25,21 @@ async function updateGrade(id, grade) {
   const updGrade = await GradeModel.findByIdAndUpdate(id, grade);
   return updGrade;
 }
-
-async function createHomeWorkGrade(id, task){
+/* async function createHomeWorkGrade(id, task){
 
   const homeWork = await GradeModel.findByIdAndUpdate(id, {$push:{homeWorks: task}}, {new: true});
 
   return homeWork;
+} */
+async function createHomeWorkGrade(id, task){
+
+  const homeWork = await GradeModel.findById(id).then(function(grade){
+    grade.homeWorks.push(task);
+    return grade.save();
+  });
+
+  return homeWork;
 }
-
-
 async function getAllMessageGrade( id ){
   const messages = await GradeModel.findById(id).populate({ path: 'mensajes', select: 'remitente asunto mensaje' });
   return messages;
