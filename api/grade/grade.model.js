@@ -35,6 +35,7 @@ const TareaSchema = new mongoose.Schema({
   },
 });
 
+
 const GradeSchema = new mongoose.Schema(
   {
     grade: {
