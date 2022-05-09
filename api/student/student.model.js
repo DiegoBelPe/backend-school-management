@@ -36,6 +36,10 @@ const StudentSchema = new mongoose.Schema(
     parentId: [{ type: mongoose.Schema.Types.ObjectId, ref: "User" }],
     gradeId: [{ type: mongoose.Schema.Types.ObjectId, ref: "Grade" }],
     mensajes: [MessageSchema],
+    avatar: {
+      type: String,
+      default: 'https://res.cloudinary.com/borismg04/image/upload/v1651633044/jcs7g28mquibdzxxq2sc.png',
+    },
   },
   {
     toJSON: { virtuals: true },
