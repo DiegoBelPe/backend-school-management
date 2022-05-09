@@ -42,6 +42,11 @@ const UserSchema = new mongoose.Schema({
       ref: "Student"
     }
   ],
+  gradeId: [
+    { type: mongoose.Schema.Types.ObjectId,
+      ref: "Grade"
+    }
+  ],
   passwordResetToken: String,
   passwordResetExpires: Date,
 }, {

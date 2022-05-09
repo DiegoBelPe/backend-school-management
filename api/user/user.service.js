@@ -1,4 +1,4 @@
-const User = require('./user.model');
+const User = require("./user.model");
 
 async function getUserById(id) {
   const user = await User.findById(id);
@@ -6,9 +6,16 @@ async function getUserById(id) {
 }
 
 async function getUserByEmail(email) {
-  const user = await User.findOne({ email }).populate({ path: 'student', select: 'id gradeId' });
+  const user = await User.findOne({ email }).populate({
+    path: "student",
+    select: "id gradeId",
+  }).populate({
+    path: "gradeId",
+    select: "homeWorks mensajes",
+  });
   return user;
 }
+
 
 async function createUser(user) {
   const newUser = await User.create(user);
@@ -26,7 +33,7 @@ async function deleteUser(id) {
 }
 
 async function getAllUsers() {
-  const users = await User.find({}, '-password');
+  const users = await User.find({}, "-password");
   return users;
 }
 

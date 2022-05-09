@@ -25,12 +25,46 @@ async function updateGrade(id, grade) {
   const updGrade = await GradeModel.findByIdAndUpdate(id, grade);
   return updGrade;
 }
-
-async function createHomeWorkGrade(id, task){
+/* async function createHomeWorkGrade(id, task){
 
   const homeWork = await GradeModel.findByIdAndUpdate(id, {$push:{homeWorks: task}}, {new: true});
 
   return homeWork;
+} */
+async function createHomeWorkGrade(id, task){
+
+  const homeWork = await GradeModel.findById(id).then(function(grade){
+    grade.homeWorks.push(task);
+    return grade.save();
+  });
+
+  return homeWork;
+}
+
+async function deleteHomeWorkGrade(id, task){
+  const homeWork = await GradeModel.findById(id).then(function(grade){
+    grade.homeWorks.pull(task);
+    return grade.save();
+  });
+  return homeWork;
+}
+async function getAllMessageGrade( id ){
+  const messages = await GradeModel.findById(id).populate({ path: 'mensajes', select: 'remitente asunto mensaje' });
+  return messages;
+}
+
+async function getAllHomeWorkGrade(id){
+  const homeWorks = await GradeModel.findById(id).populate({ path: 'homeWorks', select: 'course description observations endDate' });
+  return homeWorks;
+
+}
+
+async function postCreateMessage(id, message){
+  const postMensajes = await GradeModel.findById(id).then(function(grade){
+    grade.mensajes.push(message);
+    return grade.save();
+  });
+  return postMensajes;
 }
 
 
@@ -41,4 +75,8 @@ module.exports = {
   createGrade,
   updateGrade,
   createHomeWorkGrade,
+  getAllMessageGrade,
+  getAllHomeWorkGrade,
+  postCreateMessage,
+  deleteHomeWorkGrade
 };

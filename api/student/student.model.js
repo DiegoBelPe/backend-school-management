@@ -1,6 +1,5 @@
 const mongoose = require("mongoose");
 
-
 const MessageSchema = new mongoose.Schema({
   remitente: {
     type: String,
@@ -34,17 +33,13 @@ const StudentSchema = new mongoose.Schema(
       required: true,
       lowercase: true,
     },
-    parentId: [
-      { type: mongoose.Schema.Types.ObjectId,
-        ref: "User"
-      }
-    ],
-    gradeId: [
-      { type: mongoose.Schema.Types.ObjectId,
-        ref: "Grade"
-      }
-    ],
+    parentId: [{ type: mongoose.Schema.Types.ObjectId, ref: "User" }],
+    gradeId: [{ type: mongoose.Schema.Types.ObjectId, ref: "Grade" }],
     mensajes: [MessageSchema],
+    avatar: {
+      type: String,
+      default: 'https://res.cloudinary.com/borismg04/image/upload/v1651633044/jcs7g28mquibdzxxq2sc.png',
+    },
   },
   {
     toJSON: { virtuals: true },
