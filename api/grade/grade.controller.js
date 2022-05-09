@@ -6,7 +6,8 @@ const {
   updateGrade,
   createHomeWorkGrade,
   getAllMessageGrade,
-  getAllHomeWorkGrade
+  getAllHomeWorkGrade,
+  postCreateMessage,
 } = require("./grade.service");
 
 async function handlerAllGrade(req, res) {
@@ -108,6 +109,28 @@ async function handlerGetMessageGrade(req, res) {
     }
   }
 
+  async function handlerPostCreateMessage(req, res,next ) {
+    const { id } = req.params;
+    const remitente = req.body.remitente;
+    const asunto = req.body.asunto;
+    const mensaje = req.body.mensaje;
+
+    const newMessage = {
+      remitente: remitente,
+      asunto: asunto,
+      mensaje: mensaje,
+    };
+
+    const message = await postCreateMessage(id, newMessage);
+    if (!message) {
+      res.status(404).json({ message: `Grado no encontrado id ${id}` });
+    } else {
+      res.json(message);
+    }
+  }
+
+
+
 module.exports = {
   handlerAllGrade,
   handlerOneGrade,
@@ -117,4 +140,5 @@ module.exports = {
   handlerCreateHomeWorkGrade,
   handlerGetMessageGrade,
   handlerGetAllHomeWorkGrade,
+  handlerPostCreateMessage,
 };

@@ -51,6 +51,13 @@ async function getAllHomeWorkGrade(id){
 
 }
 
+async function postCreateMessage(id, message){
+  const postMensajes = await GradeModel.findById(id).then(function(grade){
+    grade.mensajes.push(message);
+    return grade.save();
+  });
+  return postMensajes;
+}
 
 
 module.exports = {
@@ -62,4 +69,5 @@ module.exports = {
   createHomeWorkGrade,
   getAllMessageGrade,
   getAllHomeWorkGrade,
+  postCreateMessage
 };
