@@ -45,6 +45,12 @@ async function getAllMessageGrade( id ){
   return messages;
 }
 
+async function getAllHomeWorkGrade(id){
+  const homeWorks = await GradeModel.findById(id).populate({ path: 'homeWorks', select: 'course description observations endDate' });
+  return homeWorks;
+
+}
+
 
 
 module.exports = {
@@ -55,4 +61,5 @@ module.exports = {
   updateGrade,
   createHomeWorkGrade,
   getAllMessageGrade,
+  getAllHomeWorkGrade,
 };
