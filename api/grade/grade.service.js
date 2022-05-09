@@ -40,6 +40,14 @@ async function createHomeWorkGrade(id, task){
 
   return homeWork;
 }
+
+async function deleteHomeWorkGrade(id, task){
+  const homeWork = await GradeModel.findById(id).then(function(grade){
+    grade.homeWorks.pull(task);
+    return grade.save();
+  });
+  return homeWork;
+}
 async function getAllMessageGrade( id ){
   const messages = await GradeModel.findById(id).populate({ path: 'mensajes', select: 'remitente asunto mensaje' });
   return messages;
@@ -69,5 +77,6 @@ module.exports = {
   createHomeWorkGrade,
   getAllMessageGrade,
   getAllHomeWorkGrade,
-  postCreateMessage
+  postCreateMessage,
+  deleteHomeWorkGrade
 };

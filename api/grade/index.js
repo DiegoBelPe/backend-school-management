@@ -9,6 +9,7 @@ const {
   handlerGetMessageGrade,
   handlerGetAllHomeWorkGrade,
   handlerPostCreateMessage,
+  handlerDeleteHomeWorkGrade
 } = require('./grade.controller');
 
 const router = Router();
@@ -22,5 +23,6 @@ router.post('/homeWork/:id', handlerCreateHomeWorkGrade);
 router.get('/messages/:id', handlerGetMessageGrade);
 router.get('/homeWork/:id', handlerGetAllHomeWorkGrade);
 router.post('/messages/:id', handlerPostCreateMessage);
+router.delete('/homeWork/:id/:task', handlerDeleteHomeWorkGrade);
 
 module.exports = router;

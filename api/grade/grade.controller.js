@@ -8,6 +8,7 @@ const {
   getAllMessageGrade,
   getAllHomeWorkGrade,
   postCreateMessage,
+  deleteHomeWorkGrade
 } = require("./grade.service");
 
 async function handlerAllGrade(req, res) {
@@ -88,6 +89,19 @@ async function handlerCreateHomeWorkGrade(req, res, next) {
   }
 }
 
+async function handlerDeleteHomeWorkGrade(req, res) {
+  const { id } = req.params;
+  const { task } = req.body;
+
+  const homeWork = await deleteHomeWorkGrade(id, task);
+
+  if (!homeWork) {
+    res.status(404).json({ message: `Grado no encontrado id ${id}` });
+  } else {
+    res.json({ message: `Grado con el id ${id} eliminado` });
+  }
+}
+
 async function handlerGetMessageGrade(req, res) {
   const { id } = req.params;
   const messages = await getAllMessageGrade(id);
@@ -141,4 +155,5 @@ module.exports = {
   handlerGetMessageGrade,
   handlerGetAllHomeWorkGrade,
   handlerPostCreateMessage,
+  handlerDeleteHomeWorkGrade
 };
